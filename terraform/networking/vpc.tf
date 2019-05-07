@@ -1,9 +1,8 @@
 data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "tf_vpc" {
-    cidr_blocks                   = "${var.vpc_cidr}"
-    enable_dns_hostnames = true
-    enable_dns_support      = true
+    cidr_block                   = "${var.vpc_cidr}"
+    instance_tenancy = "dedicated"
 
     tags {
         Name = "docker_swarm"

@@ -4,7 +4,14 @@ provider "aws" {
     secret_key   = "${var.aws_secret_access_key}"
 }
 
-modulo "networking" {
+module "networking" {
     source           = "./networking"
     vpc_cidr        = "${var.vpc_cidr}"
+    availability_zone = "${var.availability_zone}"
+    cidr_block_public = "${var.cidr_block_public}"
+    cidr_block_private = "${var.cidr_block_private}"
+}
+
+module "compute" {
+    source      = "./compute"
 }
